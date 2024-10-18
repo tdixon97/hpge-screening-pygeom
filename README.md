@@ -1,4 +1,6 @@
-## hpge-screening-pygeom
+[![License](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](LICENSE.md)
+
+## `hpge-screening-pygeom`
 
 Geometry of a HPGe screening station in python.
 
