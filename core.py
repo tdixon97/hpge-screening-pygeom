@@ -48,15 +48,7 @@ def visualise(wl:pyg4ometry.geant4.LogicalVolume,logical_detector:pyg4ometry.gea
     v.view()
 
 
-# make the world
-reg  = pyg4ometry.geant4.Registry()
 
-# world solid and logical                                                                                                                                         
-ws   = pyg4ometry.geant4.solid.Box("ws",400,400,400,reg)
-wl   = pyg4ometry.geant4.LogicalVolume(ws,"G4_Galactic","wl",reg)
-reg.setWorld(wl)
-
-# define a block of metadata
 
 parser = argparse.ArgumentParser(
         prog="hpge-screening-pygeom",
@@ -91,15 +83,17 @@ with open(f"cfg/test_{name}.json", 'r') as file:
     metadata = json.load(file)
 
 
+# make the world
+reg  = pyg4ometry.geant4.Registry()                                                                                                                                       
+ws   = pyg4ometry.geant4.solid.Box("ws",400,400,400,reg)
+wl   = pyg4ometry.geant4.LogicalVolume(ws,"G4_Galactic","wl",reg)
+reg.setWorld(wl)
+
 
 # use the legendhpge package to make the detector
 logical_detector  = make_hpge(metadata,name="det_log",registry=reg)
 logical_detector.pygeom_color_rgba = (0, 1, 1, 0.2)
-
-# make physical detector
 physical_detector = pyg4ometry.geant4.PhysicalVolume([0,0,0],[0,0,0],logical_detector,"det_phy",wl,reg)
-
-# set it as being a sensitivie 
 physical_detector.pygeom_active_dector = det_utils.RemageDetectorInfo("germanium", "001")
 
 # also add a source
