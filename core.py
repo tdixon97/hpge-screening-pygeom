@@ -48,13 +48,24 @@ parser = argparse.ArgumentParser(
 parser.add_argument(
     "--name", "-n", type=str, help="Name of detector", default="ic"
 )
+
+
+parser.add_argument(
+    "--vis", "-v", type=int, help="Visualize the detector", default=1
+)
+
+parser.add_argument(
+    "--out", "-o", type=str, help="Output GDML file name", default=None
+)
 args = parser.parse_args()
 name = args.name
+is_vis = bool(args.vis)
+out_gdml = args.out
 
 if (name not in ["ic","bege"]):
     raise ValueError(f"{name} is not implemented as a detector name")
 
-with open(f"test_{name}.json", 'r') as file:
+with open(f"cfg/test_{name}.json", 'r') as file:
     metadata = json.load(file)
 
 # use the legendhpge package to make the detector
@@ -72,4 +83,12 @@ physical_detector = pyg4ometry.geant4.PhysicalVolume([0,0,0],[0,0,0],logical_det
 physical_detector.pygeom_active_dector = RemageDetectorInfo("germanium", "001")
 
 # visualise
-visualise(wl,logical_detector)
+if (is_vis):
+    visualise(wl,logical_detector)
+
+# save gdml
+if (out_gdml is not None):
+    w = pyg4ometry.gdml.Writer()
+    w.addDetector(reg)
+    w.write(out_gdml)
+
