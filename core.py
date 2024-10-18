@@ -71,6 +71,5 @@ physical_detector = pyg4ometry.geant4.PhysicalVolume([0,0,0],[0,0,0],logical_det
 # set it as being a sensitivie 
 physical_detector.pygeom_active_dector = RemageDetectorInfo("germanium", "001")
 
-# change the visualisation
-
+# visualise
 visualise(wl,logical_detector)
