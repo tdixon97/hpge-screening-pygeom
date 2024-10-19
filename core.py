@@ -6,6 +6,8 @@ Author: Toby Dixon (toby.dixon.23@ucl.ac.uk)
 import pyg4ometry
 from legendhpges import make_hpge
 from l200geom import det_utils
+from l200geom import vis_utils
+
 import json
 from dataclasses import dataclass
 from typing import Literal
@@ -71,11 +73,17 @@ parser.add_argument(
 parser.add_argument(
     "--macro", "-m", type=str, help="Output macro file name", default=None
 )
+
+parser.add_argument(
+    "--vis_macro", "-V", type=str, help="Vis macro file name", default=None
+)
 args = parser.parse_args()
 name = args.name
 is_vis = bool(args.vis)
 out_gdml = args.out
 macro =   args.macro
+vis_macro=args.vis_macro
+
 if (name not in ["ic","bege"]):
     raise ValueError(f"{name} is not implemented as a detector name")
 
@@ -114,3 +122,7 @@ if (out_gdml is not None):
 
 if (macro is not None):
     det_utils.generate_detector_macro(reg,Path(macro))
+
+
+if (vis_macro is not None):
+    vis_utils.generate_color_macro(reg,Path(vis_macro))
