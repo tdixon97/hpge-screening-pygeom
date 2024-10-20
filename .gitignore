@@ -2,3 +2,5 @@
 out/*
 *~
 *#
+.ipynb*
+*.pyc

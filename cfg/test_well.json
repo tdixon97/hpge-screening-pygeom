@@ -1,0 +1,45 @@
+{
+    "name": "Det",
+    "type": "icpc",
+    "production": {
+      "enrichment": {
+        "val": 0.078,
+        "unc": 0.001
+      }
+
+    },
+   "geometry": {
+    "height_in_mm": 62,
+    "radius_in_mm": 42.5,
+    "borehole": {
+      "radius_in_mm": 16.5,
+      "depth_in_mm": 40.0
+    },
+    "groove": {
+      "depth_in_mm": 2,
+      "radius_in_mm": {
+        "outer": 10,
+        "inner": 10
+      }
+    },
+    "pp_contact": {
+      "radius_in_mm": 3,
+      "depth_in_mm": 0
+    },
+    "taper": {
+      "top": {
+        "angle_in_deg": 45,
+        "height_in_mm": 10
+      },
+      "bottom": {
+        "angle_in_deg": 45,
+        "height_in_mm": 0
+      },
+      "borehole": {
+        "angle_in_deg": 5,
+        "height_in_mm": 0
+      }
+    }
+  
+   }
+}
