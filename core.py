@@ -17,6 +17,8 @@ import numpy as np
 import logging
 from pathlib import Path
 from utils import visualise
+
+
 # LOGGER SETTINGS
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
@@ -65,10 +67,16 @@ macro =   args.macro
 vis_macro=args.vis_macro
 
 if (name not in ["ic","bege"]):
-    raise ValueError(f"{name} is not implemented as a detector name")
-
-with open(f"cfg/test_{name}.json", 'r') as file:
-    metadata = json.load(file)
+    from legendmeta import LegendMetadata
+    lmeta = LegendMetadata()
+    try:
+        metadata = lmeta.hardware.detectors.germanium.diodes[name]
+    except:
+        msg =f"supplied name {name} is neither one of the test configs or present in the legend metadata"
+        raise ValueError(msg)
+else:
+    with open(f"cfg/test_{name}.json", 'r') as file:
+        metadata = json.load(file)
 
 
 # make the world
