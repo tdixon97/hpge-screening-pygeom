@@ -1,36 +1,35 @@
 {
-    "name": "Det",
-    "type": "bege",
-    "production": {
-      "enrichment": {
-        "val": 0.90,
-        "unc": 0.01
+  "name": "Det",
+  "type": "bege",
+  "production": {
+    "enrichment": {
+      "val": 0.9,
+      "unc": 0.01
+    }
+  },
+  "geometry": {
+    "height_in_mm": 40,
+    "radius_in_mm": 40,
+    "groove": {
+      "depth_in_mm": 2.0,
+      "radius_in_mm": {
+        "outer": 10,
+        "inner": 8
       }
-
     },
-    "geometry": {
-      "height_in_mm": 40,
-      "radius_in_mm": 40,
-      "groove": {
-        "depth_in_mm": 2.0,
-        "radius_in_mm": {
-          "outer": 10,
-          "inner": 8
-        }
+    "pp_contact": {
+      "radius_in_mm": 8,
+      "depth_in_mm": 0
+    },
+    "taper": {
+      "top": {
+        "angle_in_deg": 0.0,
+        "height_in_mm": 0.0
       },
-      "pp_contact": {
-        "radius_in_mm": 8,
-        "depth_in_mm": 0
-      },
-      "taper": {
-        "top": {
-          "angle_in_deg": 0.0,
-          "height_in_mm": 0.0
-        },
-        "bottom": {
-          "angle_in_deg": 0.0,
-          "height_in_mm": 0.0
-        }
+      "bottom": {
+        "angle_in_deg": 0.0,
+        "height_in_mm": 0.0
       }
     }
   }
+}

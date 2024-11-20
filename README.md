@@ -5,8 +5,10 @@
 Geometry of a HPGe screening station in python.
 
 ### Usage
+
 ```
 python core.py -h
 ```
 
-where `$name` is either "ic" or "bege", to create a HPGe detector and visualise it.
+where `$name` is either "ic" or "bege", to create a HPGe detector and visualise
+it.
